@@ -107,7 +107,9 @@ class Robot {
   }
 
   log(message) {
-    console.log(`[${this.id} (${this.position})]: ${message}`);
+    if(process.env.MISSION_MODE == "DEBUG") {
+      console.log(`[${this.id} (${this.position})]: ${message}`);
+    }
   }
 }
 

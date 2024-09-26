@@ -68,7 +68,7 @@ describe("MissionControl", () => {
         "1 0 E",
         "3 2 N",
         "1 0 S LOST"
-        ].join("\r\n")
+        ].join("\n")
       );
 
     })
@@ -96,6 +96,5 @@ describe("MissionControl", () => {
     })
 
   })
-
 
 })

@@ -1,7 +1,7 @@
 {
   "name": "mars-robots",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./scripts/runmission.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch --coverage"

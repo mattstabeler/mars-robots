@@ -3,26 +3,18 @@ const MarsMap = require('./MarsMap.js')
 
 class MissionControl {
 
-  constructor() {
+  constructor(missionParams = null) {
     this.map = null;
     this.robots = [];
-    // const mapParams = parameters.map;
 
-    // this.map = new MarsMap(mapParams.x, mapParams.y)
-
-    // const robotParams = this.parameters.robots || [];
-
-    // robotParams.forEach(r => {
-    //   this.robots = {
-    //     robot: new Robot("x",r.x, r.y, r.d, this.map),
-    //     instructions: r.instructions
-    //   }
-    // })
-
-    // this.robots = new Map(mapParams.x, this.parameters.map.y)
+    if(missionParams) {
+      this.loadMissionParameters(missionParams);
+      this.runMission()
+    }
   }
 
   loadMissionParameters(missionParams) {
+
     // load up mission config
     // this.parameters = parameters;
     // Map x, y
@@ -50,8 +42,6 @@ class MissionControl {
 
       this.robots.push(robotData);
     })
-
-
   }
 
   runMission() {
@@ -99,7 +89,7 @@ class MissionControl {
     // output results
     const robotLocations = this.locations();
     // console.log("robotLocations", robotLocations);
-    return robotLocations.join("\r\n");
+    return robotLocations.join("\n");
   }
 }
 
