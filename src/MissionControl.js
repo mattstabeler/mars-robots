@@ -46,10 +46,19 @@ class MissionControl {
         instructions: r?.instructions || []
       }
 
+      // this.map.register(robot.id, robot);
       this.robots.push(robotData);
     })
 
 
+  }
+  locations() {
+    const locs = [];
+    for(const r in this.robots) {
+      const robot = this.robots[r].robot;
+      locs.push(robot.report())
+    }
+    return locs;
   }
 }
 

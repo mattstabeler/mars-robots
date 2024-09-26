@@ -51,4 +51,25 @@ describe("MissionControl", () => {
 
   })
 
+  describe("Robot locations", () => {
+
+    it("Should report locations for registered Robots", () => {
+
+      const mockLocation = jest.fn();
+      mockLocation.mockReturnValueOnce("1 2 E")
+        .mockReturnValueOnce("2 3 N")
+        .mockReturnValue("3 4 S LOST")
+
+      missionControl.robots = {
+        "Robot-1" : { robot: { id: 1, report: mockLocation } },
+        "Robot-2" : { robot: { id: 2, report: mockLocation } },
+        "Robot-3" : { robot: { id: 3, report: mockLocation } },
+      }
+
+      const testLocations = missionControl.locations();
+      expect(testLocations.length).toBe(3);
+      expect(testLocations).toEqual(expect.arrayContaining(["1 2 E", "2 3 N", "3 4 S LOST"]))
+    })
+
+  })
 })

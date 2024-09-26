@@ -7,13 +7,7 @@ class MarsMap {
 
     this.x = x;
     this.y = y;
-
-    this.robots = { };
     this.badSmell = { };
-  }
-
-  register(r) {
-    this.robots[r.id] = r;
   }
 
   hasScent(x, y, direction) {
@@ -24,14 +18,6 @@ class MarsMap {
     this.badSmell[`${x}${y}${direction}`] = true;
   }
 
-  locations() {
-    const locs = [];
-    for(const r in this.robots) {
-      const robot = this.robots[r];
-      locs.push(robot.report())
-    }
-    return locs;
-  }
 
 }
 

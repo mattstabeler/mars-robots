@@ -45,26 +45,7 @@ describe("MarsMap", () => {
   })
 
 
-  describe("Robot locations", () => {
 
-    it("Should report locations for registered Robots", () => {
-
-      const mockLocation = jest.fn();
-      mockLocation.mockReturnValueOnce("1 2 E")
-        .mockReturnValueOnce("2 3 N")
-        .mockReturnValue("3 4 S LOST")
-
-      map.register({ id: 1, report: mockLocation});
-      map.register({ id: 2, report: mockLocation});
-      map.register({ id: 3, report: mockLocation});
-
-      const testLocations = map.locations();
-      expect(testLocations.length).toBe(3);
-      expect(testLocations).toEqual(expect.arrayContaining(["1 2 E", "2 3 N", "3 4 S LOST"]))
-
-    })
-
-  })
 
 
 })
