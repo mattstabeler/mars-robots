@@ -1,3 +1,4 @@
+const MissionParameters = require("../src/MissionParameters.js");
 const { MissionControl } = require("../src/MissionControl.js");
 
 // Sample Input
@@ -10,25 +11,33 @@ const { MissionControl } = require("../src/MissionControl.js");
 // LLFFFLFLFL
 
 
-const missionParameters = {
+// const missionParameters = {
 
-  map: { x: 5, y: 3},
-  robots:
-    [
-      {
-        x: 1, y: 1, d: "E",
-        instructions: "RFRFRFRF".split("")
-      },
-      { x: 3, y: 2, d: "N",
-        instructions: "FRRFLLFFRRFLL".split("")
-      },
-      { x: 0, y: 3, d: "W",
-        instructions: "LLFFFLFLFL".split("")
-      },
-    ]
+//   map: { x: 5, y: 3},
+//   robots:
+//     [
+//       {
+//         x: 1, y: 1, d: "E",
+//         instructions: "RFRFRFRF".split("")
+//       },
+//       { x: 3, y: 2, d: "N",
+//         instructions: "FRRFLLFFRRFLL".split("")
+//       },
+//       { x: 0, y: 3, d: "W",
+//         instructions: "LLFFFLFLFL".split("")
+//       },
+//     ]
+// }
 
-
-}
-
-const mission = new MissionControl(missionParameters);
-console.log(mission.missionReport());
+((args) => {
+  const fname = args?.[2];
+  if(fname) {
+    (async ()  => {
+      const missionParameters = await MissionParameters.parseMissionData(fname);
+      const mission = new MissionControl(missionParameters);
+      console.log(mission.missionReport());
+    })()
+  }else {
+    console.error("Missing filename");
+  }
+})(process.argv)
