@@ -1,4 +1,4 @@
-const { MissionControl  } = require("./MissionControl.js")
+const { MissionControl } = require("./MissionControl.js")
 
 
 describe("MissionControl", () => {
@@ -10,11 +10,14 @@ describe("MissionControl", () => {
       robots:
         [
            { x: 2, y: 1, d: "N", instructions: ["L", "F", "L", "F", "L"]},
-           { x: 2, y: 3, d: "W", instructions: ["L","L","L", "F", "L", "F", "L"]},
+           { x: 2, y: 3, d: "W", instructions: ["R","L","L", "F", "L", "F", "L"]},
+           { x: 1, y: 1, d: "S", instructions: ["F", "F","F","F","F","F","F","F","F","F","F"]},
         ]
     }
 
     missionControl = new MissionControl();
+
+    jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
   })
 
@@ -34,6 +37,7 @@ describe("MissionControl", () => {
        { x: 2, y: 1, d: "N", instructions: ["L", "F", "L", "F", "L"]},
       ]
 
+
       missionControl.loadMissionParameters(missionParams);
 
       expect(missionControl.map).toBeDefined();
@@ -46,6 +50,26 @@ describe("MissionControl", () => {
       expect(missionControl.robots[0].robot.x).toBe(2);
       expect(missionControl.robots[0].robot.y).toBe(1);
       expect(missionControl.robots[0].instructions).toEqual(["L", "F", "L", "F", "L"]);
+
+    })
+
+  })
+
+  describe("Run mission", () => {
+
+
+    it("Should run the mission", () => {
+      missionControl.loadMissionParameters(missionParams);
+      missionControl.runMission();
+      const report = missionControl.missionReport();
+
+      expect(report).toEqual(
+        [
+        "1 0 E",
+        "3 2 N",
+        "1 0 S LOST"
+        ].join("\r\n")
+      );
 
     })
 
@@ -72,4 +96,6 @@ describe("MissionControl", () => {
     })
 
   })
+
+
 })

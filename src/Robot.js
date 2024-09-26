@@ -31,7 +31,6 @@ class Robot {
     this.direction = direction;
     this.map = map;
     this.lost = false;
-
   }
 
   left() {

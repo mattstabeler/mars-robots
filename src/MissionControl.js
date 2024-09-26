@@ -41,17 +41,50 @@ class MissionControl {
 
     robotParams.forEach((r, idx) => {
       const robotId = `Robot-${idx+1}`;
+
+      const robot = new Robot(robotId, r.x, r.y, r.d, this.map);
       const robotData  =  {
-        robot: new Robot(robotId,r.x, r.y, r.d, this.map),
+        robot: robot,
         instructions: r?.instructions || []
       }
 
-      // this.map.register(robot.id, robot);
       this.robots.push(robotData);
     })
 
 
   }
+
+  runMission() {
+    // process all robot moves
+    //
+    this.robots.forEach(r => {
+
+      const robot = r.robot;
+      const instructions = r.instructions;
+
+      instructions.forEach(move => {
+        switch(move) {
+          case "L":
+            // code block
+            robot.left();
+            break;
+          case "R":
+            robot.right();
+            // code block
+            break;
+          case "F":
+            robot.forward();
+            // code block
+            break;
+          default:
+            console.log("Not a valid instruction")
+            // code block
+        }
+      })
+
+    })
+  }
+
   locations() {
     const locs = [];
     for(const r in this.robots) {
@@ -60,8 +93,15 @@ class MissionControl {
     }
     return locs;
   }
+
+
+  missionReport() {
+    // output results
+    const robotLocations = this.locations();
+    // console.log("robotLocations", robotLocations);
+    return robotLocations.join("\r\n");
+  }
 }
 
 
-
-module.exports = { MissionControl  };
+module.exports = { MissionControl };
