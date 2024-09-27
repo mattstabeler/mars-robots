@@ -24,9 +24,9 @@ let steve = new Robot("Steve", 3, 2, "N", map);
 // < x x x x
 let mike = new Robot("Mike", 0, 3, "W", map);
 
-map.register(dave);
-map.register(steve);
-map.register(mike);
+// map.register(dave);
+// map.register(steve);
+// map.register(mike);
 
 // RFRFRFRF
 dave
@@ -38,7 +38,6 @@ dave
   .forward()
   .right()
   .forward()
-console.log(dave.report());
 
 // FRRFLLFFRRFLL
 steve
@@ -56,7 +55,6 @@ steve
   .left()
   .left()
   .left()
-console.log(steve.report());
 
 
 // LLFFFLFLFL
@@ -71,6 +69,8 @@ mike
   .left()
   .forward()
   .left()
+console.log(dave.report());
 console.log(mike.report());
+console.log(steve.report());
 
-console.log("Locations", map.locations());
+// console.log("Locations", map.locations());

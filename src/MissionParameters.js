@@ -5,11 +5,7 @@ class MissionParameters {
 
   static async parseMissionData(missionFilePath) {
 
-    // first line is the map size
-    // remaining twoline parts are robot positions then movements
-    //
     const lines = await this.loadMissionFile(missionFilePath);
-    // console.log(lines);
 
     // Map x, y
     // Robots [
@@ -23,6 +19,8 @@ class MissionParameters {
       robots: []
     }
 
+    // first line is the map size
+    // remaining twoline pairs are robot positions and movements
     missionParameters.map = this.parseMapCoords(lines.shift());
 
     let robotPos;
@@ -58,7 +56,6 @@ class MissionParameters {
 
   static async loadMissionFile(fileName) {
 
-
     const fileStream = fs.createReadStream(fileName);
 
     const rl = readline.createInterface({
@@ -68,20 +65,9 @@ class MissionParameters {
 
     const lines = [];
     for await (const line of rl) {
-      // Each line in input.txt will be successively available here as `line`.
-      // console.log(`Line from file: ${line}`);
       lines.push(line);
     }
     return lines;
-
-      // return ["5 3",
-      //   "1 1 E",
-      //   "RFRFRFRF",
-      //   "3 2 N",
-      //   "FRRFLLFFRRFLL",
-      //   "0 3 W",
-      //   "LLFFFLFLFL"]
-
   }
 }
 

@@ -30,12 +30,15 @@ Run tests with `npm run test` or `npm run test:watch` requires `jest`.
 
 The `MissionControl` class  is responsible for running missions, using `MarsMap` and `Robot`  classes. 
 
+See `scripts/basic.js` for example of moving robots about a map. 
 
 
 # TODO:
 
 - more test coverage for MissionControl
 - better input checking when reading file
+- defensive coding/error checking
+- move the robot location tracking to MissionControl, so that we don't ask a lost robot to report it's location (i.e. track the   coords before and after each move)
 
 
 ## Example Output
