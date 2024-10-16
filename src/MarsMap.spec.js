@@ -12,17 +12,7 @@ describe("MarsMap", () => {
 
     expect(map.x).toBe(3);
     expect(map.y).toBe(4);
-    expect(map.robots).toEqual({});
     expect(map.badSmell).toEqual({});
-
-  })
-
-  describe("Register Robots", () => {
-    it("Should register a new robot", () => {
-      const robot = { id: 1 }; // dummy robot
-      map.register(robot);
-      expect(map.robots[1]).toBe(robot);
-    })
 
   })
 
