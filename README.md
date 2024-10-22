@@ -46,7 +46,7 @@ See `scripts/basic.js` for example of moving robots about a map.
 
 # TODO: Mission Spec 2
 
-- feature toggle for turning off "scent" logic from Mission 1
+- feature toggle for turning off "scent" and LOST logic from Mission 1
 
 
 
