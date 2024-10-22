@@ -1,10 +1,14 @@
+
+
+//
 const moves = {
   // BOTTOM LEFT is 0,0
-  N : { x:  0,  y :  1,  symbol: "^"},
-  E : { x:  1,  y :  0,  symbol: ">" },
-  S : { x:  0,  y : -1,  symbol: "v" },
-  W : { x: -1,  y :  0,  symbol: "<" },
+  N : { x:  0,  y :  1 },
+  E : { x:  1,  y :  0 },
+  S : { x:  0,  y : -1 },
+  W : { x: -1,  y :  0 },
 }
+
 
 const rotations = {
   right : {

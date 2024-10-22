@@ -26,12 +26,26 @@ class MissionParameters {
     let robotPos;
     while(robotPos = lines.shift()) {
       const robotInstructions = lines.shift();
-      const robotData = this.parseRobotLines(robotPos, robotInstructions);
+
+      const convertedInstructions = this.normaliseRobotInstructions(robotInstructions);
+
+      const robotData = this.parseRobotLines(robotPos, convertedInstructions);
+
       missionParameters.robots.push(robotData);
     }
 
     return missionParameters;
 
+  }
+
+  /**
+   * This is to support different robor movement data, where move forward is converted from `M`, to `F`
+   * @param  {string} string representing instructions e.g. `MLLRLM`
+   * @return {string} normalised instruction set, e.g. `FLLRLF`
+   */
+  static normaliseRobotInstructions(instructions) {
+    // replace M's for F's
+    return instructions.replaceAll("M", "F");
   }
 
   static parseRobotLines(robotPos, robotInstructions) {
