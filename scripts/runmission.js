@@ -33,9 +33,14 @@ const { MissionControl } = require("../src/MissionControl.js");
   const fname = args?.[2];
   if(fname) {
     (async ()  => {
-      const missionParameters = await MissionParameters.parseMissionData(fname);
-      const mission = new MissionControl(missionParameters);
-      console.log(mission.missionReport());
+      try {
+        const missionParameters = await MissionParameters.parseMissionData(fname);
+        const mission = new MissionControl(missionParameters);
+        console.log(mission.missionReport());
+
+      } catch(err){
+        console.error("Unable to run mission", err.message);
+      }
     })()
   }else {
     console.error("Missing filename");
