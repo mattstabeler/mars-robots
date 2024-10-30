@@ -10,7 +10,6 @@ const { MissionControl } = require("../src/MissionControl.js");
 // 0 3 W
 // LLFFFLFLFL
 
-
 // const missionParameters = {
 
 //   map: { x: 5, y: 3},
@@ -31,18 +30,18 @@ const { MissionControl } = require("../src/MissionControl.js");
 
 ((args) => {
   const fname = args?.[2];
-  if(fname) {
-    (async ()  => {
+  if (fname) {
+    (async () => {
       try {
-        const missionParameters = await MissionParameters.parseMissionData(fname);
+        const missionParameters =
+          await MissionParameters.parseMissionData(fname);
         const mission = new MissionControl(missionParameters);
         console.log(mission.missionReport());
-
-      } catch(err){
+      } catch (err) {
         console.error("Unable to run mission", err.message);
       }
-    })()
-  }else {
+    })();
+  } else {
     console.error("Missing filename");
   }
-})(process.argv)
+})(process.argv);
