@@ -17,7 +17,7 @@ instructions:
 - Left : the robot turns left 90 degrees and remains on the current grid point.
 - Right : the robot turns right 90 degrees and remains on the current grid point.
 - Forward : the robot moves forward one grid point in the direction of the current
-orientation and maintains the same orientation.
+  orientation and maintains the same orientation.
 
 The direction North corresponds to the direction from grid point (x, y) to grid point (x, y+1).
 
@@ -49,11 +49,13 @@ The maximum value for any coordinate is 50.
 All instruction strings will be less than 100 characters in length.
 
 ## The Output
+
 For each robot position/instruction in the input, the output should indicate the final grid
 position and orientation of the robot. If a robot falls off the edge of the grid the word “LOST”
 should be printed after the position and orientation.
 
 ### Sample Input
+
 ```
 5 3
 1 1 E
@@ -65,6 +67,7 @@ LLFFFLFLFL
 ```
 
 ### Sample Output
+
 ```
 1 1 E
 3 3 N LOST

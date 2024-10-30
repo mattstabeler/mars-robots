@@ -1,13 +1,10 @@
-
-
-const MarsMap = require('../src/MarsMap.js')
-const Robot = require('../src/Robot.js')
-
+const MarsMap = require("../src/MarsMap.js");
+const Robot = require("../src/Robot.js");
 
 // x x x x x
 // x x x x x
 // x x x x x
-let map = new MarsMap(5, 3)
+let map = new MarsMap(5, 3);
 
 // x x x x x
 // x > x x x
@@ -29,15 +26,7 @@ let mike = new Robot("Mike", 0, 3, "W", map);
 // map.register(mike);
 
 // RFRFRFRF
-dave
-  .right()
-  .forward()
-  .right()
-  .forward()
-  .right()
-  .forward()
-  .right()
-  .forward()
+dave.right().forward().right().forward().right().forward().right().forward();
 
 // FRRFLLFFRRFLL
 steve
@@ -54,8 +43,7 @@ steve
   .forward()
   .left()
   .left()
-  .left()
-
+  .left();
 
 // LLFFFLFLFL
 mike
@@ -68,7 +56,7 @@ mike
   .forward()
   .left()
   .forward()
-  .left()
+  .left();
 console.log(dave.report());
 console.log(mike.report());
 console.log(steve.report());
